@@ -1,3 +1,6 @@
+# 1.0.2
+- Quadratisches Plugin-Icon ohne eigene Rundung, damit es in den Rahmen der Administration passt
+
 # 1.0.1
 - Schärferes Plugin-Icon (256 × 256 statt 40 × 40)
 

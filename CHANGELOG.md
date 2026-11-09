@@ -1,3 +1,6 @@
+# 1.0.2
+- Square plugin icon without own rounded corners, so it fits the frame of the administration
+
 # 1.0.1
 - Sharper plugin icon (256 × 256 instead of 40 × 40)
 
