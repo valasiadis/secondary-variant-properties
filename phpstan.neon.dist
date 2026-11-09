@@ -1,0 +1,7 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+    # The plugin supports several 6.7 minor versions; an ignore may only match on some of them.
+    reportUnmatchedIgnoredErrors: false

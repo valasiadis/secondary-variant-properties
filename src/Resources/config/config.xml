@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Secondary variant properties</title>
+        <title lang="de-DE">Sekundäre Varianteneigenschaften</title>
+
+        <component name="sw-entity-multi-id-select">
+            <name>secondaryGroups</name>
+            <entity>property_group</entity>
+            <label>Secondary properties</label>
+            <label lang="de-DE">Sekundäre Eigenschaften</label>
+            <helpText>These properties depend on the others but never grey out values of the other properties.</helpText>
+            <helpText lang="de-DE">Diese Eigenschaften hängen von den übrigen ab, sorgen aber nie dafür, dass Werte der übrigen Eigenschaften ausgegraut werden.</helpText>
+        </component>
+
+        <input-field type="bool">
+            <name>hideUnavailableSecondary</name>
+            <label>Hide secondary values that do not match the current selection or are sold out (otherwise greyed out)</label>
+            <label lang="de-DE">Sekundäre Werte ausblenden, die zur aktuellen Auswahl nicht passen oder ausverkauft sind (sonst ausgegraut)</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>hideInListingFilter</name>
+            <label>Hide secondary properties in the product filter of listings and search results</label>
+            <label lang="de-DE">Sekundäre Eigenschaften im Produktfilter von Listings und Suchergebnissen ausblenden</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>excludeFromSearch</name>
+            <label>Exclude secondary values from the product search</label>
+            <label lang="de-DE">Sekundäre Werte von der Produktsuche ausschließen</label>
+            <helpText>Only the setting for "All sales channels" is used. Rebuild the search index after changing it.</helpText>
+            <helpText lang="de-DE">Es gilt nur die Einstellung für „Alle Verkaufskanäle“. Nach einer Änderung den Suchindex neu aufbauen.</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+</config>

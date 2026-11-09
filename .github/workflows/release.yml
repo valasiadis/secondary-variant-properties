@@ -1,0 +1,43 @@
+name: Release
+
+# Push a tag like v1.2.3 to publish a release. The tag must match the version in composer.json.
+# The release notes are the matching section of CHANGELOG.md, the plugin zip is attached.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check tag against composer.json
+        run: |
+          version=$(jq -r .version composer.json)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match composer.json version $version"
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Release notes from CHANGELOG.md
+        run: |
+          awk -v head="# $VERSION" '$0 == head {found=1; next} /^# / {found=0} found' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
+          if [ ! -s "$RUNNER_TEMP/notes.md" ]; then
+            echo "::error::No section '# $VERSION' in CHANGELOG.md"
+            exit 1
+          fi
+
+      - name: Build plugin zip
+        run: sh bin/build-zip.sh
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "SecondaryVariantProperties-$VERSION.zip" \
+            --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag

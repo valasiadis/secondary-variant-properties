@@ -1,0 +1,55 @@
+{
+    "name": "valasiadis/secondary-variant-properties",
+    "description": "Shopware 6 plugin: secondary variant properties depend on the other properties but never grey out their values.",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "keywords": ["shopware", "shopware-plugin", "variants", "configurator", "product-variants"],
+    "authors": [
+        {
+            "name": "Emanuel Valasiadis",
+            "email": "emanuel@valasiadis.space"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "shopware/core": "~6.7.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Valasiadis\\SecondaryVariantProperties\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Valasiadis\\SecondaryVariantProperties\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Valasiadis\\SecondaryVariantProperties\\SecondaryVariantProperties",
+        "label": {
+            "de-DE": "Sekundäre Varianteneigenschaften",
+            "en-GB": "Secondary variant properties"
+        },
+        "description": {
+            "de-DE": "Sekundäre Eigenschaften (z. B. eine Gewichtsklasse) hängen von den übrigen Eigenschaften ab, sorgen aber nie dafür, dass deren Werte ausgegraut werden. Beim Wechsel wird automatisch der erste lieferbare sekundäre Wert gewählt.",
+            "en-GB": "Secondary properties (e.g. a weight class) depend on the other properties but never grey out their values. When switching, the first available secondary value is selected automatically."
+        }
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse",
+        "test": "phpunit"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": false
+        },
+        "audit": {
+            "block-insecure": false
+        }
+    }
+}

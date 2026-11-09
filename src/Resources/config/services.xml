@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Valasiadis\SecondaryVariantProperties\Service\SecondaryGroupConfig">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Valasiadis\SecondaryVariantProperties\Service\ConfiguratorLoaderDecorator"
+                 decorates="Shopware\Core\Content\Product\SalesChannel\Detail\ProductConfiguratorLoader">
+            <argument type="service" id=".inner"/>
+            <argument type="service" id="Valasiadis\SecondaryVariantProperties\Service\SecondaryGroupConfig"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Detail\AvailableCombinationLoader"/>
+        </service>
+
+        <service id="Valasiadis\SecondaryVariantProperties\Route\FindProductVariantRouteDecorator"
+                 decorates="Shopware\Core\Content\Product\SalesChannel\FindVariant\FindProductVariantRoute">
+            <argument type="service" id=".inner"/>
+            <argument type="service" id="Valasiadis\SecondaryVariantProperties\Service\SecondaryGroupConfig"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\ProductCloseoutFilterFactory"/>
+        </service>
+
+        <service id="Valasiadis\SecondaryVariantProperties\Subscriber\ListingFilterSubscriber">
+            <argument type="service" id="Valasiadis\SecondaryVariantProperties\Service\SecondaryGroupConfig"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Valasiadis\SecondaryVariantProperties\Service\SearchKeywordAnalyzerDecorator"
+                 decorates="Shopware\Core\Content\Product\SearchKeyword\ProductSearchKeywordAnalyzer">
+            <argument type="service" id=".inner"/>
+            <argument type="service" id="Valasiadis\SecondaryVariantProperties\Service\SecondaryGroupConfig"/>
+        </service>
+    </services>
+</container>
