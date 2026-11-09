@@ -1,3 +1,6 @@
+# 1.0.1
+- Schärferes Plugin-Icon (256 × 256 statt 40 × 40)
+
 # 1.0.0
 - Erste Version: sekundäre Varianteneigenschaften, die die Wählbarkeit der übrigen Eigenschaften nicht beeinflussen
 - Beim Variantenwechsel bleiben primäre Werte erhalten, der erste lieferbare sekundäre Wert wird gewählt

@@ -2,7 +2,7 @@
     "name": "valasiadis/secondary-variant-properties",
     "description": "Shopware 6 plugin: secondary variant properties depend on the other properties but never grey out their values.",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "keywords": ["shopware", "shopware-plugin", "variants", "configurator", "product-variants"],
     "authors": [

@@ -1,3 +1,6 @@
+# 1.0.1
+- Sharper plugin icon (256 × 256 instead of 40 × 40)
+
 # 1.0.0
 - Initial release: secondary variant properties that do not affect the selectability of the other properties
 - Variant switch keeps primary values and selects the first available secondary value
